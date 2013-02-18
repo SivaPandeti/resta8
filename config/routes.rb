@@ -1,4 +1,16 @@
 Resta8::Application.routes.draw do
+  resources :bookings
+
+
+  resources :rooms
+
+
+  resources :customers
+
+
+  resources :hotels
+
+
   resources :orders
 
 

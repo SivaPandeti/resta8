@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
-  respond_to :html, :json
-
+  respond_to :html, :json, :xml
   def index
     @items = Item.all
     respond_with @items
@@ -28,12 +27,12 @@ class ItemsController < ApplicationController
     respond_with @item
   end
 
-
   def update
     @item = Item.find(params[:id])
     @item.update_attributes(params[:item])
     respond_with @item
   end
+
 
   def destroy
     @item = Item.find(params[:id])

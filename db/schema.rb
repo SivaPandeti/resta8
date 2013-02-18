@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217150044) do
+ActiveRecord::Schema.define(:version => 20130218075550) do
+
+  create_table "bookings", :force => true do |t|
+    t.date     "booking_date"
+    t.integer  "booking_length"
+    t.integer  "room_id"
+    t.integer  "customer_id"
+    t.integer  "hotel_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "bookings", ["customer_id"], :name => "index_bookings_on_customer_id"
+  add_index "bookings", ["hotel_id"], :name => "index_bookings_on_hotel_id"
+  add_index "bookings", ["room_id"], :name => "index_bookings_on_room_id"
+
+  create_table "customers", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "hotels", :force => true do |t|
+    t.string   "hotel_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "website"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -29,5 +63,16 @@ ActiveRecord::Schema.define(:version => 20130217150044) do
   end
 
   add_index "orders", ["item_id"], :name => "index_orders_on_item_id"
+
+  create_table "rooms", :force => true do |t|
+    t.string   "room_name"
+    t.decimal  "room_rate",  :precision => 10, :scale => 0
+    t.string   "room_type"
+    t.integer  "hotel_id"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "rooms", ["hotel_id"], :name => "index_rooms_on_hotel_id"
 
 end

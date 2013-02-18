@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :xml
 
   def index
     @orders = Order.all
