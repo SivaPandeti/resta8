@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @rooms = Room.all
+    @rooms = Room.paginate(page: params[:page])
     respond_with @rooms
   end
 

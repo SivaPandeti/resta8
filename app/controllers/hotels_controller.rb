@@ -3,7 +3,7 @@ class HotelsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @hotels = Hotel.all
+    @hotels = Hotel.paginate(page: params[:page])
     respond_with @hotels
   end
 

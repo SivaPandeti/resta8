@@ -1,12 +1,13 @@
-<h1>Listing bookings</h1>
-
-<table>
+<h1>Hotel Bookings</h1>
+<%= link_to 'Add New Booking', new_booking_path %>
+<br /><br />
+<table class="table table-striped">
   <tr>
     <th>Customer</th>
     <th>Hotel</th>
     <th>Room</th>
     <th>Booking date</th>
-    <th>Booking length</th>
+    <th>Duration of Stay</th>
     <th></th>
     <th></th>
     <th></th>
@@ -27,5 +28,6 @@
 </table>
 
 <br />
+<%= will_paginate %>
 
-<%= link_to 'New Booking', new_booking_path %>
+

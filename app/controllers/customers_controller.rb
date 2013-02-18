@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @customers = Customer.all
+    @customers = Customer.paginate(page: params[:page])
     respond_with @customers
   end
 

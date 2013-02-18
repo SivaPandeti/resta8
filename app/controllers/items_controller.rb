@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   respond_to :html, :json, :xml
   def index
-    @items = Item.all
+    @items = Item.paginate(page: params[:page])
     respond_with @items
   end
 

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Resta8</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<b>Restaurant--</b><%= link_to 'Items', items_path %> |
-<%= link_to 'Orders', orders_path %> <br/>
-<b>Hotel--------</b><%= link_to 'Customers', customers_path %> |
-<%= link_to 'Hotels', hotels_path %> |
-<%= link_to 'Rooms', rooms_path %> |
-<%= link_to 'Bookings', bookings_path %> 
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>DR</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>    
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      
+    </div>
+  </body>
 </html>

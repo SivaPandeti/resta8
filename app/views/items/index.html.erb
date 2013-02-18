@@ -1,6 +1,7 @@
-<h1>Listing items</h1>
-
-<table>
+<h1>Menu Items</h1>
+<%= link_to 'Add New Item', new_item_path %>
+<br /><br />
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Price</th>
@@ -20,6 +21,8 @@
 <% end %>
 </table>
 
-<br />
+<%= will_paginate %>
 
-<%= link_to 'New Item', new_item_path %>
+
+
+

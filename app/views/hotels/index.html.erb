@@ -1,6 +1,7 @@
-<h1>Listing hotels</h1>
-
-<table>
+<h1>Hotels</h1>
+<%= link_to 'Add New Hotel', new_hotel_path %>
+<br /><br />
+<table class="table table-striped">
   <tr>
     <th>Hotel name</th>
     <th>Address</th>
@@ -30,4 +31,5 @@
 
 <br />
 
-<%= link_to 'New Hotel', new_hotel_path %>
+
+<%= will_paginate %>

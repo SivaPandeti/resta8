@@ -1,9 +1,10 @@
-<h1>Listing orders</h1>
-
-<table>
+<h1>Restaurant Orders</h1>
+<%= link_to 'Add New Order', new_order_path %>
+<br /><br />
+<table class="table table-striped">
   <tr>
     <th>Order_ID</th>
-    <th>Item_ID</th>
+    <th>Item</th>
     <th>Quantity</th>
     <th></th>
     <th></th>
@@ -24,4 +25,5 @@
 
 <br />
 
-<%= link_to 'New Order', new_order_path %>
+
+<%= will_paginate %>

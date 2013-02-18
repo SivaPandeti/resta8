@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @orders = Order.all
+    @orders = Order.paginate(page: params[:page])
     respond_with @orders
   end
 
