@@ -1,4 +1,10 @@
 Resta8::Application.routes.draw do
+  resources :sales
+
+
+  resources :products
+
+
   root :to => 'static_pages#home'
   
   resources :bookings

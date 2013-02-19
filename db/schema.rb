@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218075550) do
+ActiveRecord::Schema.define(:version => 20130219035626) do
 
   create_table "bookings", :force => true do |t|
     t.date     "booking_date"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(:version => 20130218075550) do
 
   add_index "orders", ["item_id"], :name => "index_orders_on_item_id"
 
+  create_table "products", :force => true do |t|
+    t.string   "category"
+    t.string   "subcategory"
+    t.string   "brand"
+    t.string   "model"
+    t.string   "description"
+    t.decimal  "price",       :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
   create_table "rooms", :force => true do |t|
     t.string   "room_name"
     t.decimal  "room_rate",  :precision => 10, :scale => 0
@@ -74,5 +85,18 @@ ActiveRecord::Schema.define(:version => 20130218075550) do
   end
 
   add_index "rooms", ["hotel_id"], :name => "index_rooms_on_hotel_id"
+
+  create_table "sales", :force => true do |t|
+    t.integer  "quantity"
+    t.string   "credit_card_no"
+    t.decimal  "discount",       :precision => 10, :scale => 0
+    t.integer  "product_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  add_index "sales", ["customer_id"], :name => "index_sales_on_customer_id"
+  add_index "sales", ["product_id"], :name => "index_sales_on_product_id"
 
 end
