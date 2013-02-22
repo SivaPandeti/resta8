@@ -3,12 +3,24 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.paginate(page: params[:page])
-    respond_with @orders
+    #respond_with @orders
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @orders.to_json(:include => { :item => { :only => :name}})
+      end
+    end
   end
 
   def show
     @order = Order.find(params[:id])
-    respond_with @order
+    # respond_with @order
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @order.to_json(:include => { :item => { :only => :name}})
+      end
+    end
   end
 
   def new

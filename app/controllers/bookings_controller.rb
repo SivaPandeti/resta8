@@ -4,13 +4,28 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.paginate(page: params[:page])
-    respond_with @bookings
+    #respond_with @bookings
+    respond_to do |format|
+      format.html
+      format.json do
+        #render :json => @bookings.to_json(:include => [ :customer, :room])
+        render :json => @bookings.to_json(:include => [ { :customer => { :only => :first_name}}, { :room => { :only => :room_name}}, { :hotel => { :only => :hotel_name}} ] )
+      end
+    end
   end
 
   def show
     @booking = Booking.find(params[:id])
-    respond_with @booking
+    #respond_with @booking
+    respond_to do |format|
+      format.html
+      format.json do
+        #render :json => @bookings.to_json(:include => [ :customer, :room])
+        render :json => @booking.to_json(:include => [ { :customer => { :only => :first_name}}, { :room => { :only => :room_name}}, { :hotel => { :only => :hotel_name}} ] )
+      end
+    end
   end
+
 
   def new
     @booking = Booking.new

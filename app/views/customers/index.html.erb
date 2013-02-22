@@ -8,6 +8,10 @@
     <th>Last name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Password</th>
+    <th>Secret Question</th>
+    <th>Secret Answer</th>
+    <th>Default Credit Card Number</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +23,10 @@
     <td><%= customer.last_name %></td>
     <td><%= customer.email %></td>
     <td><%= customer.phone %></td>
+    <td><%= customer.password %></td>
+    <td><%= customer.secret_question %></td>
+    <td><%= customer.secret_answer %></td>
+    <td><%= customer.default_credit_card_no %></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
